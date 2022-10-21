@@ -1,0 +1,21 @@
+<%- include ('partials/header.ejs') %>
+  <%- include ('partials/navbar.ejs') %>
+  
+  <div class="container">
+    <br>
+    <h3>Registros</h3>
+    <br>
+    <div class="container">
+      <% registros.forEach(registros=>{ %>
+        <table>
+          <%=registros.nome%>
+        </table>
+        
+      <% }) %>
+
+    </div>
+    <a href="/login" class="btn btn-success">Login</a>
+    <hr>
+  </div>
+  
+<%- include ('partials/footer.ejs') %>

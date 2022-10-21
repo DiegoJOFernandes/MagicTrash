@@ -1,0 +1,35 @@
+<%- include ('partials/header.ejs') %>
+<style>
+  #chat{
+    max-height: 300px;
+    min-height: 300px;
+    overflow-y: scroll;
+  }
+</style>
+  <%- include ('partials/navbar.ejs') %>
+    <h4>chat greener</h4>
+    <div id="chat">
+    </div>
+    <input type="text" name="" id="msg" class="form-control" placeholder="Mensagem">
+    <input type="text" name="" id="username" placeholder="nome do usuário" class="form-control">
+    <button onclick="enviar()" class="btn btn-success btn-lg btn-block">Enviar</button>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.2.0/socket.io.js"></script>
+    <script>      
+      var socket = io(`https://greeneraps.herokuapp.com/`)
+      socket.on("showmsg", (data) => {
+        console.log(data)
+        var chat = document.getElementById("chat")
+        var p = document.createElement("p")
+        p.innerHTML = `${data.username}: ${data.msg}`
+        chat.append(p)
+      })
+      function enviar() {
+        var msgField = document.getElementById("msg")
+        var usernameField = document.getElementById("username")
+        var msg = msgField.value
+        var username = usernameField.value
+        socket.emit("msg", { msg: msg, username: username })
+      }
+    </script>
+
+<%- include ('partials/footer.ejs') %>

@@ -1,0 +1,48 @@
+<%- include ('partials/header.ejs') %>
+  <%- include ('partials/navbar.ejs') %>
+  
+  <div class="container">
+    <img src="/img/ia.png" width="5%" style="float: right;">
+    <br>
+    <h3>Catalogar imagens</h3>
+    <br>
+    
+    <table width="100%" style="margin-bottom: 7px;">
+      <tr>
+        <td colspan="2" style="padding-bottom: 10px;">
+          <input type="file" class="form-control" onchange="abrir()">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <img src="" alt="" id="imagem" width="250px" height="198px" style="border-radius: 5px">
+        </td>
+        <td width="80%">
+          <textarea class="form-control" id="arquivos" rows="7" spellcheck="false"></textarea>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <div class="bg-warning mt-2" style="padding: 5px;" align="right">
+            <span id="resultado">...</span>
+          </div>
+        </td>
+      </tr>
+
+    </table>
+
+    <table width="100%">
+      <tr>
+        <td width="82%"><input type="text" id="classe" class="form-control" placeholder="Nome da classe"></td>
+        <td align="right"><button type="btn btn-silver" onclick="classificar()">Classificar</button></td>
+        <td align="right"><button type="btn btn-warning" onclick="prever()">Prever</button></td>
+      </tr>
+
+    </table>
+
+    <a href="/cadastro" class="btn btn-success">Cadastre-se</a>
+    <a href="/login" class="btn btn-success">Login</a>
+    <hr>
+  </div>
+  <script src="/js/action01.js"></script>
+<%- include ('partials/footer.ejs') %>

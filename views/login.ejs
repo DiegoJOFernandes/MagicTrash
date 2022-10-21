@@ -1,0 +1,22 @@
+<%- include ('partials/header.ejs') %>
+  <%- include ('partials/navbar.ejs') %>
+  
+  <div class="container">
+    <br>
+    <h3>Login</h3>
+    <br>
+    <form action="" method="post">
+      <input type="text" name="login" placeholder="Usuário">
+      <input type="password" name="password" placeholder="Senha">
+      <br>
+      <br>
+      <input type="submit" name="acao" value="Login" class="btn btn-success">
+      <a href="/cadastro" class="btn btn-success">Cadastre-se</a>
+
+    </form>
+    <br>
+    
+    <!-- <a href="/login" class="btn btn-success">Login</a> -->
+    <hr>
+  </div>
+<%- include ('partials/footer.ejs') %>

@@ -1,0 +1,55 @@
+<%- include ('partials/header.ejs') %>
+  <%- include ('partials/navbar.ejs') %>
+  <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="#">Home</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Menu</li>
+    </ol>
+  </nav>
+
+  <div class="container text-center">
+    <div class="row">
+      <div class="col">
+        1 of 2
+      </div>
+      <div class="col">
+        2 of 2
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        1 of 3
+      </div>
+      <div class="col">
+        2 of 3
+      </div>
+      <div class="col">
+        3 of 3
+      </div>
+    </div>
+  </div>
+
+  <div class="container text-center">
+    <div class="row">
+      <div class="col">
+        Column
+      </div>
+      <div class="col">
+        Column
+      </div>
+      <div class="col">
+        Column
+      </div>
+    </div>
+  </div>
+  
+  <div class="container">
+    <h3>Menu de Opções</h3>
+      <br>
+      <a href="/chat" class="btn btn-success">Chat</a>
+      <a href="/personal" class="btn btn-success">Seu Perfil</a>
+      <a href="/cadastro" class="btn btn-success">Cadastro</a>
+      <a href="/grafico" class="btn btn-success">Gráfico</a>
+  </div>
+  
+<%- include ('partials/footer.ejs') %>
