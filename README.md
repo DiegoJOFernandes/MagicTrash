@@ -1,17 +1,17 @@
 # MagicTrash
 
 <div justify-content="space-between" align-items="center">
-  <h2>Welcome!</h2>
-  <br>
-  <img src="https://ibb.co/JymfMWb" width="100">
+  <p>
+  <img src="public/img/Greener.png" width="200">
+  <p>
 </div>
 
-### Intro
+## Intro
 
 IA com habilidade de catalogar imagens e identificar e-lixo*.
 
 *e-lixo -> Lixo eletrônico
-### Configuração
+## Configuração
 
 Clone este projeto e execute o comando na raiz do projeto:
 
