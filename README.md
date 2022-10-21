@@ -3,7 +3,7 @@
 <div justify-content="space-between" align-items="center">
   <h2>Welcome!</h2>
   <br>
-  <img src="https://www.figma.com/file/bP0zcskOw0wFGUem5hHBU9/Magic-Trash?node-id=52686%3A402" width="100">
+  <img src="https://ibb.co/JymfMWb" width="100">
 </div>
 
 ### Intro
