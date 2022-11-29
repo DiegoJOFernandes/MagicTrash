@@ -26,12 +26,7 @@ app.use("/", usersController)
 
 
 app.get('/', (req, res) => {
-  // User.findOne({where:{email: email}}).then(user => {
-  //   res.render('home', {info: info})
-  // })
-  
   res.render('home')
-
 })
 
 app.get('/chat', adminAuth, (req, res) => {
@@ -84,15 +79,14 @@ app.get('/ia', (req, res)=>{
   res.render('tensorflow')
 })
 
+app.get('/login', (req, res)=>{
+  res.render('login')
+})
+
 io.on("connection",(socket) => {
   socket.on("disconnect", () => {
     console.log("X desconectou: " + socket.id)
   })
-
-  // socket.on("palavra", (data) => {
-  //   console.log(data)
-  //   socket.emit("resultado", data + " " + "Grenner App" )
-  // })
 
   socket.on('msg', (data) => {
     socket.broadcast.emit('showmsg', data)

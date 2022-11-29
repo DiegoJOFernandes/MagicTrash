@@ -17,8 +17,8 @@ router.get("/admin/users/create", (req, res) => {
 router.post("/users/create", (req, res) => {
   var email = req.body.email;
   var password = req.body.password;
-  var firstname = req.body.firstName;
-  var secondname = req.body.secondName;
+  var firstname = req.body.firstname;
+  var secondname = req.body.secondname;
   var datauser = req.body.date;
 
   User.findOne({where:{email: email}}).then(user => {
@@ -32,8 +32,9 @@ router.post("/users/create", (req, res) => {
         password: hash,
         firstname: firstname,
         secondname: secondname,
-        datauser: datauser
-      }).then(()=>{
+        datanasc: datauser
+      }).then((x)=>{
+        console.log(x)
         res.redirect("/")
       }).catch((err)=>{
         res.redirect("/")

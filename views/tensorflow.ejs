@@ -2,7 +2,6 @@
   <%- include ('partials/navbar.ejs') %>
   
   <div class="container">
-    <img src="/img/ia.png" width="5%" style="float: right;">
     <br>
     <h3>Catalogar imagens</h3>
     <br>
@@ -23,7 +22,7 @@
       </tr>
       <tr>
         <td colspan="2">
-          <div class="bg-warning mt-2" style="padding: 5px;" align="right">
+          <div class="bg-secondary mt-2" style="padding: 5px;" align="right">
             <span id="resultado">...</span>
           </div>
         </td>
@@ -34,12 +33,10 @@
     <table width="100%">
       <tr>
         <td width="82%"><input type="text" id="classe" class="form-control" placeholder="Nome da classe"></td>
-        <td align="right"><button class="btn btn-silver" onclick="classificar()">Classificar</button></td>
-        <td align="right"><button class="btn btn-warning" onclick="prever()">Prever</button></td>
+        <td align="right"><button class="btn btn-secondary" onclick="classificar()">Classificar</button></td>
+        <td align="right"><button class="btn btn-secondary" onclick="prever()">Prever</button></td>
       </tr>
-
     </table>
-    <hr>
   </div>
   <script src="/js/action01.js"></script>
 <%- include ('partials/footer.ejs') %>
