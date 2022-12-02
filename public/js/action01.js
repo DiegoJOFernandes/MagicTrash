@@ -5,10 +5,10 @@ $('#classe').val('');
 $('#arquivos').html('');
 
 function abrir() {
-	let preview = document.querySelector('#imagem');
+	let exibicao = document.querySelector('#exibicao');
+	let captura = document.querySelector('#captura');
 	let file = document.querySelector('input[type=file]').files[0];
 	let reader = new FileReader();
-	console.log(file)
 
 	if(file) {
 		reader.readAsDataURL(file);
@@ -20,11 +20,13 @@ function abrir() {
 				$('#arquivos').html(file.name);	
 		}
 	}else {
-		preview.src = '';
+		exibicao.src = './img/icon.png';
+		captura.src = './img/icon.png';
 	}
 
 	reader.onloadend = function() {
-		preview.src = reader.result;
+		exibicao.src = reader.result;
+		captura.src = reader.result;
 	}
 	$('#resultado').text('...');
 }
@@ -34,55 +36,52 @@ function classificar() {
 	let className = $('#classe').val().trim();
 	if(className.length <= 0) className = 'Classe INDEFINIDA';
 
-	const img = document.getElementById('imagem');
+	const img = document.getElementById('captura');
 	const arrPixels = tf.browser.fromPixels(img).arraySync();
+
 	const objClasse = {Class: className, Pixels: arrPixels};
-	
 	classificacoes.push(objClasse);
 
-	const resultado = `Classificado como <b><span class='text-danger'>${className.toUpperCase()}</span></b>`;
-
+	const resultado = 
+	`<b>CLASSIFICADO como <span class='text-danger-themex'>${className.toUpperCase()}</span></b>`;
 	$('#resultado').html(resultado);
 }
 
 function prever() {
-	$('#resultado').text('... processando predição.')
+	$('#resultado').text('... processando predição.');
 	$('#classe').val('...');
 	$('#arquivos').text('...');
 
-	const img = document.getElementById('imagem');
-	const tfPixels1 = tf.browser.fromPixels(img)
+	const img = document.getElementById('captura');
+	const tfPixels1 = tf.browser.fromPixels(img);
 
-	let arrDiferencas = []
-	let arrClassName = []
+	let arrDiferencas = [];
+	let arrClassName = [];
+	for(let i=0; i<classificacoes.length; i++) {
+		const className = classificacoes[i].Class.trim();
+		const tfPixels2 = tf.tensor(classificacoes[i].Pixels);
 
-	for(let i=0; i < classificacoes.length; i++) {
-		const className = classificacoes[i].Class.trim()
-		const tfPixels2 = tf.tensor(classificacoes[i].Pixels)
-
-		const diferenca = tfPixels1.sub(tfPixels2).abs().sum().arraySync()
-		arrClassName.push(className)
-		arrDiferencas.push(diferenca)
+		const diferenca = tfPixels1.sub(tfPixels2).abs().sum().arraySync();
+		arrClassName.push(className);
+		arrDiferencas.push(diferenca);
 	}
 
-	const menor = tf.tensor(arrDiferencas).min().arraySync()
-	const maior = tf.tensor(arrDiferencas).max().arraySync()
-	
-	const percentPositivo = parseFloat(100-((menor/(menor + maior))*100)).toFixed(8)
-	const percentNegativo = parseFloat(100-percentPositivo).toFixed(8)
-
+	const menor = tf.tensor(arrDiferencas).min().arraySync();
+	const maior = tf.tensor(arrDiferencas).max().arraySync();
+	const percentPositivo = parseFloat(100-((menor/(menor+maior))*100)).toFixed(8);
+	const percentNegativo = parseFloat(100-percentPositivo).toFixed(8);
 	let index = 0;
-	for(let i=0; i< arrDiferencas.length; i++) {
-		if (arrDiferencas[i] == menor) index = i;
+	for(let i=0; i<arrDiferencas.length; i++) {
+		if(arrDiferencas[i]==menor) index = i;
 	}
 
-	const classificacao = arrClassName[index].toString().trim()
-
-	
-	$('#resultado').html(`<b><span class='text-danger'>${classificacao.toUpperCase()}</span></b>`)
+	const classificacao = arrClassName[index].toString().trim();
+	$('#resultado').html(`<b><span class='text-danger-themex'>${classificacao.toUpperCase()}</span></b>`);
 	$('#classe').val(classificacao);
 
-	const probabilidades = `${percentPositivo}% de probabilidades de pertencer a classe ${classificacao} \r\n` + 
-	`${percentNegativo}% de probabilidade de pertencer a outras classes.`
+	const probabilidades = 
+	`${percentPositivo}% de probabilidades de pertencer a classe ${classificacao}.\r\n` +
+	`${percentNegativo}% de probabilidades de pertencer a outras classes.`;
 	$('#arquivos').html(probabilidades);
 }
+

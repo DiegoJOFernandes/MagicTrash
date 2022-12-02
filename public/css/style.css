@@ -1,6 +1,5 @@
 body{
   background-color: #eceff1;
-  padding-bottom: 100px;
 }
 
 #formulario-pergunta{
@@ -116,4 +115,8 @@ input:focus ~ label{
   box-shadow: 0 0 0 0.2rem rgba(23, 162, 184, 0.5);
 }
 
-
+.text-danger-themex {
+  background: -webkit-linear-gradient(#00A9B1, #75ffb6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

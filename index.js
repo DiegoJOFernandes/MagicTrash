@@ -99,6 +99,7 @@ io.on("connection",(socket) => {
 const saveport = process.env.PORT || 4000
 http.listen(saveport, () => {
   console.log('APP RODANDO!')
+  console.log('http://localhost:4000')
   //http://localhost:4000
 })
 
