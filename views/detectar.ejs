@@ -1,0 +1,31 @@
+<%- include ('partials/header.ejs') %>
+  <%- include ('partials/navbar.ejs') %>
+
+    <body>
+      <br>
+      <div class="container">
+
+        <img src="img/icon.png" width="5%" style="float: right;">
+        <h2>Inteligência Artificial trabalho de TCC</h2>
+        <p id="carregamento">... carregando, por favor aguarde.</p>
+
+        <table width="100%" style="margin-bottom: 7px;">
+          <tr>
+            <td align="center">
+              <canvas id="desenho" width="400px" height="300px"></canvas>
+            </td>
+          </tr>
+        </table>
+
+        <table width="100%">
+          <tr>
+            <td width="83%" style="padding-bottom: 10px;"><input type="file" class="form-control" onchange="abrir()">
+            </td>
+            <td align="right"><button type="button" id="botao" class="btn btn-secondary btn-lg"
+                onclick="prever()">Detectar Objetos</button></td>
+          </tr>
+        </table>
+
+      </div>
+      <script src="js/detector.js"></script>
+      <%- include ('partials/footer.ejs') %>

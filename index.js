@@ -78,6 +78,9 @@ app.get('/menu', (req, res)=>{
 app.get('/ia', (req, res)=>{
   res.render('tensorflow')
 })
+app.get('/detect', (req, res)=>{
+  res.render('detectar')
+})
 
 app.get('/login', (req, res)=>{
   res.render('login')
