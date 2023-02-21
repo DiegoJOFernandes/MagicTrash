@@ -1,6 +1,6 @@
 var express = require('express')
 var app = express()
-const session = require('express-session')
+const session = require('cookie-session')
 const bodyParser = require("body-parser");
 var http = require('http').createServer(app)
 var io = require("socket.io")(http)
@@ -23,7 +23,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(session({secret: 'aumentaAsegurancaDaSessionTokyo', cookie: {maxAge: 90000000}}))
 app.use("/", usersController)
-
 
 app.get('/', (req, res) => {
   res.render('home')
