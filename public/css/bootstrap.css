@@ -8869,6 +8869,10 @@ a.text-secondary:hover, a.text-secondary:focus {
   color: #545b62 !important;
 }
 
+.text-brown {
+  color: #C05637 !important;
+}
+
 .text-success {
   color: #28a745 !important;
 }

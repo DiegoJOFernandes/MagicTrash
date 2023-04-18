@@ -1,0 +1,30 @@
+{
+  "green": [
+    "teclado",
+    "desktop",
+    "tablets",
+    "smartphone",
+    "fone de ouvido",
+    "cabo",
+    "mouse",
+    "pilhas",
+    "bateria",
+    "notebook"
+  ],
+  "brown": [
+    "dvd",
+    "som",
+    "tv"
+  ],
+  "azul": [
+    "batedeira",
+    "liquidificador",
+    "secador de cabelo"
+    
+  ],
+  "white": [
+    "maquina de lavar",
+    "fogão",
+    "geladeira"
+  ]
+}

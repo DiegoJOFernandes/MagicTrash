@@ -1,8 +1,23 @@
 let classificacoes = [];
+let categories = [];
+let objCategories = null
 
 $('#resultado').html('&nbsp;');
 $('#classe').val('');
 $('#arquivos').html('');
+$('#categoria').html('');
+
+$.getJSON('./js/categories.json', function(result){
+	categories.push(result)
+
+	objCategories = categories[0]
+	console.log(objCategories)
+
+	if (objCategories.green.find(target => target === 'mouse') == 'mouse') {
+		const textEtrash = `<div class="bg-light" style="padding: 12px;" align="right"><b><span class='text-dark'>testes</span></b></div>`
+		$("#background-div").html(textEtrash)
+	}
+})
 
 function abrir() {
 	let exibicao = document.querySelector('#exibicao');
@@ -78,10 +93,40 @@ function prever() {
 	const classificacao = arrClassName[index].toString().trim();
 	$('#resultado').html(`<b><span class='text-danger-themex'>${classificacao.toUpperCase()}</span></b>`);
 	$('#classe').val(classificacao);
+	
 
+	
+	
 	const probabilidades = 
 	`${percentPositivo}% de probabilidades de pertencer a classe ${classificacao}.\r\n` +
 	`${percentNegativo}% de probabilidades de pertencer a outras classes.`;
 	$('#arquivos').html(probabilidades);
+
+	let categoryTrash = {
+		green: "E-LIXO GRUPO VERDE",
+		blue: "E-LIXO GRUPO AZUL",
+		brown: "E-LIXO GRUPO MARROM",
+		white: "E-LIXO GRUPO BRANCO",
+	}
+	
+	if (objCategories.green.find(target => target === classificacao) == classificacao) {
+		const textEtrash = `<div class="bg-light" style="padding: 12px;" align="right"><b><span class='text-success'>${classificacao} | ${categoryTrash.green}</span></b></div>`
+		$("#background-div").html(textEtrash)
+	}
+	
+	if (objCategories.blue.find(target => target === classificacao) == classificacao) {
+		const textEtrash = `<div class="bg-light" style="padding: 12px;" align="right"><b><span class='text-info'>${classificacao} | ${categoryTrash.blue}</span></b></div>`
+		$("#background-div").html(textEtrash)
+	}
+	
+	if (objCategories.brown.find(target => target === classificacao) == classificacao) {
+		const textEtrash = `<div class="bg-light" style="padding: 12px;" align="right"><b><span class='text-brown '>${classificacao} | ${categoryTrash.brown}</span></b></div>`
+		$("#background-div").html(textEtrash)
+	}
+	
+	if (objCategories.white.find(target => target === classificacao) == classificacao) {
+		const textEtrash = `<div class="bg-light" style="padding: 12px;" align="right"><b><span class='text-dark '>${classificacao} | ${categoryTrash.brown}</span></b></div>`
+		$("#background-div").html(textEtrash)
+	}
 }
 
