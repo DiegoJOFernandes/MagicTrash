@@ -13,13 +13,12 @@ $.getJSON('./js/categories.json', function(result){
 	objCategories = categories[0]
 	console.log(objCategories)
 
-	if (objCategories.green.find(target => target === 'mouse') == 'mouse') {
-		const textEtrash = `<div class="bg-light" style="padding: 12px;" align="right"><b><span class='text-dark'>testes</span></b></div>`
-		$("#background-div").html(textEtrash)
-	}
+	let textEtrash = `<div class="bg-light" style="padding: 12px;" align="right"><b><span class='text-dark'></span></b></div>`
+	$("#background-div").html(textEtrash)
 })
 
 function abrir() {
+	$('#categoria').html('')
 	let exibicao = document.querySelector('#exibicao');
 	let captura = document.querySelector('#captura');
 	let file = document.querySelector('input[type=file]').files[0];
@@ -66,6 +65,7 @@ function prever() {
 	$('#resultado').text('... processando predição.');
 	$('#classe').val('...');
 	$('#arquivos').text('...');
+	
 
 	const img = document.getElementById('captura');
 	const tfPixels1 = tf.browser.fromPixels(img);
@@ -94,9 +94,6 @@ function prever() {
 	$('#resultado').html(`<b><span class='text-danger-themex'>${classificacao.toUpperCase()}</span></b>`);
 	$('#classe').val(classificacao);
 	
-
-	
-	
 	const probabilidades = 
 	`${percentPositivo}% de probabilidades de pertencer a classe ${classificacao}.\r\n` +
 	`${percentNegativo}% de probabilidades de pertencer a outras classes.`;
@@ -109,23 +106,23 @@ function prever() {
 		white: "E-LIXO GRUPO BRANCO",
 	}
 	
-	if (objCategories.green.find(target => target === classificacao) == classificacao) {
-		const textEtrash = `<div class="bg-light" style="padding: 12px;" align="right"><b><span class='text-success'>${classificacao} | ${categoryTrash.green}</span></b></div>`
+	if (objCategories.blue.find(target => target === classificacao) == classificacao) {
+		let textEtrash = `<div class="bg-light" style="padding: 12px;" align="right"><b><span class='text-info'>${classificacao} | ${categoryTrash.blue}</span></b></div>`
 		$("#background-div").html(textEtrash)
 	}
 	
-	if (objCategories.blue.find(target => target === classificacao) == classificacao) {
-		const textEtrash = `<div class="bg-light" style="padding: 12px;" align="right"><b><span class='text-info'>${classificacao} | ${categoryTrash.blue}</span></b></div>`
+	if (objCategories.green.find(target => target === classificacao) == classificacao) {
+		let textEtrash = `<div class="bg-light" style="padding: 12px;" align="right"><b><span class='text-success'>${classificacao} | ${categoryTrash.green}</span></b></div>`
 		$("#background-div").html(textEtrash)
 	}
 	
 	if (objCategories.brown.find(target => target === classificacao) == classificacao) {
-		const textEtrash = `<div class="bg-light" style="padding: 12px;" align="right"><b><span class='text-brown '>${classificacao} | ${categoryTrash.brown}</span></b></div>`
+		let textEtrash = `<div class="bg-light" style="padding: 12px;" align="right"><b><span class='text-brown'>${classificacao} | ${categoryTrash.brown}</span></b></div>`
 		$("#background-div").html(textEtrash)
 	}
 	
 	if (objCategories.white.find(target => target === classificacao) == classificacao) {
-		const textEtrash = `<div class="bg-light" style="padding: 12px;" align="right"><b><span class='text-dark '>${classificacao} | ${categoryTrash.brown}</span></b></div>`
+		let textEtrash = `<div class="bg-light" style="padding: 12px;" align="right"><b><span class='text-dark'>${classificacao} | ${categoryTrash.white}</span></b></div>`
 		$("#background-div").html(textEtrash)
 	}
 }
